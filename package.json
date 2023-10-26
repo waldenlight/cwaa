@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/waldenlight/cwaa#readme",
   "dependencies": {
-    "nodemon": "^3.0.1"
+    "apollo": "^2.34.0",
+    "apollo-link-context": "^1.0.20",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1",
+    "react-scripts": "^5.0.1"
   }
 }
