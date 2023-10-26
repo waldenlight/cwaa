@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AssignedClients from './pages/AssignedClients';
+import Main from './pages/Main';
 import Navbar from './components/Navbar';
 
 import {
@@ -45,7 +46,7 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            <Route exact path='/assigned' component={AssignedClients} />
+            <Route exact path='/Assigned' component={AssignedClients} />
             <Route render={() => <h1 className='display-2'>Wrong page</h1>} />
           </Switch>
         </>

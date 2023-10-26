@@ -7,9 +7,9 @@ import {
   Col
 } from 'react-bootstrap';
 
-// import { getMe, deleteClient } from '../utils/API';
+import { getMe, deleteClient } from '../utils/API';
 import Auth from '../utils/auth';
-// import { removeClientId } from '../utils/localStorage';
+import { removeClientId } from '../utils/localStorage';
 import { REMOVE_CLIENT } from '../utils/mutations';
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -85,11 +85,11 @@ const AssignedClients = () => {
       <Container>
         <h2 className='pt-5'>
           {userData.assignedClients.length
-            ? `Viewing ${userData.assignedClients.length} saved ${userData.assignedClients.length === 1 ? 'client' : 'clients'}:`
+            ? `Viewing ${userData.assignedClients.length} assigned ${userData.assignedClients.length === 1 ? 'client' : 'clients'}:`
             : 'You have no assigned clients'}
         </h2>
         <Row>
-          {userData.savedClients.map((client) => {
+          {userData.assignedClients.map((client) => {
             return (
               <Col md="4">
                 <Card key={client.clientId} border='dark'>
@@ -112,4 +112,4 @@ const AssignedClients = () => {
   );
 };
 
-export default SavedClients;
+export default AssignedClients;
