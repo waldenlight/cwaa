@@ -11,6 +11,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import SignupForm from './components/SignupForm';
 
 // import Home from './pages/Home';
 // import Signup from './pages/Signup';
@@ -46,6 +47,7 @@ function App() {
         <>
           <Navbar />
           <Switch>
+            <Route exact path='/' component={Main} />
             <Route exact path='/Assigned' component={AssignedClients} />
             <Route render={() => <h1 className='display-2'>Wrong page</h1>} />
           </Switch>
