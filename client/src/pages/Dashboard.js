@@ -75,10 +75,10 @@ const Dashboard = () => {
                 {userData.assignedClients.map((client) => {
                     return (
                         <Col md="4">
-                            <Card key={client.clientId} border='dark'>
+                            <Card className='m-3' key={client.clientId} border='dark'>
                                 {client.image ? <Card.Img src={client.image} alt={`The cover for ${client.title}`} variant='top' /> : null}
                                 <Card.Body>
-                                    <Card.Title>{client.title}</Card.Title>
+                                    <Card.Title>{client.name}</Card.Title>
                                     <p className='small'>Writers: {client.writers}</p>
                                     <Card.Text>{client.description}</Card.Text>
                                     {/* <Button className='btn-block btn-danger' onClick={() => handleDeleteClient(client.clientId)}>
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
             {/* Create new client */}
 
-            <a onClick={() => setShowClientModal(true)}>Add New Client</a>
+            <a className='m-3' onClick={() => setShowClientModal(true)}>Add New Client</a>
 
             <Modal
                 size='lg'

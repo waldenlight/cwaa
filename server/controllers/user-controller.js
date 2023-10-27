@@ -1,9 +1,22 @@
 // import user model
 const { User } = require('../models');
+const { Client } = require('../models');
 // import sign token function from auth
 const { signToken } = require('../utils/auth');
 
 module.exports = {
+  // get all users
+  async getAllUsers({ user = null, params }, res) {
+    const foundUsers = await User.create({
+      include: [{ username: params.username }]
+    });
+
+    if (!foundUsers) {
+      return res.status(400).json({ message: 'No users' });
+    }
+
+    res.status(200).json(foundUsers);
+  },
   // get a single user by either their id or their username
   async getSingleUser({ user = null, params }, res) {
     const foundUser = await User.findOne({
@@ -55,6 +68,15 @@ module.exports = {
       console.log(err);
       return res.status(400).json(err);
     }
+  },
+  async createClient({ body }, res) {
+    const client = await Client.create(body);
+
+    if (!client) {
+      return res.status(400).json({ message: 'Client not found!' });
+    }
+    // const token = signToken(client);
+    res.json({ client });
   },
   async deleteClient({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(

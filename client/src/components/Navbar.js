@@ -30,7 +30,7 @@ const AppNavbar = () => {
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link style={{ color: '#F0F4F8', fontWeight: 'bold' }}  onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link style={{ color: '#F0F4F8', fontWeight: 'bold' }} onClick={() => setShowModal(true)}>Login</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>

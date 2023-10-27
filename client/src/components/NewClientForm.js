@@ -39,6 +39,7 @@ const NewClientForm = () => {
 
             const { client } = await response.json();
             console.log(client);
+            client.createClient(client)
             // Auth.login(token);
         } catch (err) {
             console.error(err);
@@ -82,7 +83,6 @@ const NewClientForm = () => {
                         name='email'
                         onChange={handleInputChange}
                         value={clientFormData.email}
-                        required
                     />
                     <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
                 </Form.Group>
@@ -98,7 +98,7 @@ const NewClientForm = () => {
                     />
                 </Form.Group>
                 <Button
-                    disabled={!(clientFormData.name && clientFormData.email && clientFormData.description)}
+                    disabled={!(clientFormData.name)}
                     type='submit'
                     variant='success'>
                     Submit
