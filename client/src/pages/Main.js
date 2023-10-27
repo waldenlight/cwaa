@@ -60,7 +60,7 @@ const SignupForm = () => {
                             <li>Unlimited access</li>
                             <li>Up to ten writers</li>
                         </ul>
-                        <a href="/signup" class="btn btn-success" style={{ color: '#102A43', backgroundColor: '#F7C948' }} >Sign Up</a>
+                        <a href="/Signup" class="btn btn-success" style={{ color: '#102A43', backgroundColor: '#F7C948' }} >Sign Up</a>
                     </div>
                 </div>
 

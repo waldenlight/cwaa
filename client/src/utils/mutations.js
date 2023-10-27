@@ -38,6 +38,18 @@ export const ASSIGN_CLIENT = gql`
   }
 `;
 
+export const CREATE_CLIENT = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const REMOVE_CLIENT = gql`
   mutation removeClient($clientId: ID!) {
     removeClient(clientId: $clientId) {
