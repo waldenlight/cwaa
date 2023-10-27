@@ -12,9 +12,9 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar style={{ backgroundColor: '#0F609B' }} expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
+          <Navbar.Brand style={{ color: '#F0F4F8', fontWeight: 'bold' }} as={Link} to='/'>
             CWAA
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
@@ -30,7 +30,7 @@ const AppNavbar = () => {
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link style={{ color: '#F0F4F8', fontWeight: 'bold' }}  onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
