@@ -20,7 +20,7 @@ import NewClientForm from '../components/NewClientForm';
 
 const Dashboard = () => {
 
-    const [showModal, setShowModal] = useState(false);
+    const [showClientModal, setShowClientModal] = useState(false);
     const [userData, setUserData] = useMutation(REMOVE_CLIENT);
 
     // Test data for clients
@@ -94,21 +94,18 @@ const Dashboard = () => {
 
             {/* Create new client */}
 
-            <Link onClick={() => setShowModal(true)}>Add New Client</Link>
+            <a onClick={() => setShowClientModal(true)}>Add New Client</a>
 
             <Modal
                 size='lg'
-                show={showModal}
-                onHide={() => setShowModal(false)}
-                aria-labelledby='signup-modal'>
-                {/* tab container to do either signup or login component */}
-                <Tab.Container defaultActiveKey='login'>
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NewClientForm handleModalClose={() => setShowModal(false)} />
-                    </Modal.Body>
-                </Tab.Container>
+                show={showClientModal}
+                onHide={() => setShowClientModal(false)}
+                aria-labelledby='client-modal'>
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                    <NewClientForm handleModalClose={() => setShowClientModal(false)} />
+                </Modal.Body>
             </Modal>
 
         </>

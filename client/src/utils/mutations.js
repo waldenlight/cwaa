@@ -38,13 +38,12 @@ export const ASSIGN_CLIENT = gql`
   }
 `;
 
-export const CREATE_CLIENT = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
+export const ADD_CLIENT = gql`
+  mutation addClient($name: String!, $email: String!, $description: String!) {
+    addClient(name: $name, email: $email, description: $description) {
+      client {
         _id
-        username
+        name
       }
     }
   }
