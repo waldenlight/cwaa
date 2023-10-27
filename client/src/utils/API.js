@@ -39,7 +39,18 @@ export const assignClient = (clientData, token) => {
   });
 };
 
-// export const dropClient = (clientId, token) => {
+export const createClient = (clientData, token) => {
+  return fetch('/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(clientData),
+  });
+};
+
+// export const deleteClient = (clientId, token) => {
 //   return fetch(`/api/users/clients/${clientId}`, {
 //     method: 'DELETE',
 //     headers: {
