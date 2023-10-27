@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AssignedClients from './pages/AssignedClients';
 import Main from './pages/Main';
+import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 
 import {
@@ -48,8 +49,9 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Main} />
+            <Route exact path='/Signup' component={Signup} />
             <Route exact path='/Assigned' component={AssignedClients} />
-            <Route render={() => <h1 className='display-2'>Wrong page</h1>} />
+            <Route render={() => <h1 className='display-2'>404</h1>} />
           </Switch>
         </>
       </Router>
