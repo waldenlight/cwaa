@@ -1,49 +1,43 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+// import important parts of sequelize library
+const { Model, DataTypes } = require('sequelize');
+// import our database connection from config.js
+const sequelize = require('../config/connection');
 
-const clientSchema = require('./Client');
+// Initialize User model (table) by extending off Sequelize's Model class
+class User extends Model { }
 
-const userSchema = new Schema(
+// set up fields and rules for User model
+User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     username: {
-      type: String,
-      required: true,
-      unique: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    assignedClients: [clientSchema],
+    // clients: {
+    //   type: DataTypes.ARRAY,
+    // }
   },
   {
-    toJSON: {
-      virtuals: true,
-    },
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'user',
   }
 );
-
-// hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  next();
-});
-
-// custom method to compare and validate password for logging in
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-const User = model('User', userSchema);
 
 module.exports = User;
