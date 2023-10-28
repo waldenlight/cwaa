@@ -82,4 +82,16 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.post('/login', (req, res) => {
+  // create a new user
+  User.findOne({ where: { username: req.body.username, password: req.body.password } })
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
+
 module.exports = router;
